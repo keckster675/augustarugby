@@ -49,9 +49,6 @@
     .ticker-group { font-size: 15px !important; gap: 26px !important; padding-right: 26px !important; }
   }
 </style>
-<script
-  src="https://www.paypal.com/sdk/js?client-id=BAAdx8d_VZ7B2T7cD4y0Nyi_N39daMi_lyKQTn7LIYMQV6k0iHPrXiTAsslQLcC2qo2_9JdPKaAlenWVPU&components=hosted-buttons&enable-funding=venmo&currency=USD">
-</script>
 </head>
 <body>
 
@@ -284,13 +281,15 @@
   <div id="donate" style="padding:90px 48px; background:oklch(0.14 0.02 255); text-align:center;">
     <div class="ar-display" style="font-size:clamp(28px,4vw,44px); text-transform:uppercase; color:white; margin-bottom:12px;">Support The Club</div>
     <div style="color:oklch(0.7 0.01 255); font-size:17px; margin-bottom:40px; max-width:560px; margin-left:auto; margin-right:auto;">Augusta Rugby runs on volunteer coaching, borrowed fields, and gear that doesn't buy itself. Every donation goes straight back into the pack.</div>
-    <div id="paypal-container-UNSUGP7ZJ7VPL" style="max-width:360px; margin:0 auto;"></div>
+    <div>
+      <style>.pp-UNSUGP7ZJ7VPL{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+      <form action="https://www.paypal.com/ncp/payment/UNSUGP7ZJ7VPL" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+        <input class="pp-UNSUGP7ZJ7VPL" type="submit" value="Donate" />
+        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+        <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+      </form>
+    </div>
   </div>
-  <script>
-    paypal.HostedButtons({
-      hostedButtonId: "UNSUGP7ZJ7VPL",
-    }).render("#paypal-container-UNSUGP7ZJ7VPL")
-  </script>
 
   <!-- GEAR & PARTNERS -->
   <div id="gear" style="padding:90px 48px; max-width:1300px; margin:0 auto;">
