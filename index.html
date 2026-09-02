@@ -49,6 +49,9 @@
     .ticker-group { font-size: 15px !important; gap: 26px !important; padding-right: 26px !important; }
   }
 </style>
+<script
+  src="https://www.paypal.com/sdk/js?client-id=BAAdx8d_VZ7B2T7cD4y0Nyi_N39daMi_lyKQTn7LIYMQV6k0iHPrXiTAsslQLcC2qo2_9JdPKaAlenWVPU&components=hosted-buttons&enable-funding=venmo&currency=USD">
+</script>
 </head>
 <body>
 
@@ -270,12 +273,24 @@
         <a href="https://myaccount.rugbyxplorer.com.au/dashboard" class="ar-condensed" style="background:oklch(0.14 0.02 255); color:white; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:19px; padding:16px 36px; transform:skew(-8deg); display:inline-block;">
           <span style="display:inline-block; transform:skew(8deg);">Register on USA Rugby</span>
         </a>
-        <a href="#contact" class="ar-condensed" style="border:2px solid oklch(0.14 0.02 255); color:oklch(0.14 0.02 255); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:19px; padding:14px 36px; transform:skew(-8deg); display:inline-block;">
+        <a href="#donate" class="ar-condensed" style="border:2px solid oklch(0.14 0.02 255); color:oklch(0.14 0.02 255); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:19px; padding:14px 36px; transform:skew(-8deg); display:inline-block;">
           <span style="display:inline-block; transform:skew(8deg);">Donate to the Club</span>
         </a>
       </div>
     </div>
   </div>
+
+  <!-- DONATE -->
+  <div id="donate" style="padding:90px 48px; background:oklch(0.14 0.02 255); text-align:center;">
+    <div class="ar-display" style="font-size:clamp(28px,4vw,44px); text-transform:uppercase; color:white; margin-bottom:12px;">Support The Club</div>
+    <div style="color:oklch(0.7 0.01 255); font-size:17px; margin-bottom:40px; max-width:560px; margin-left:auto; margin-right:auto;">Augusta Rugby runs on volunteer coaching, borrowed fields, and gear that doesn't buy itself. Every donation goes straight back into the pack.</div>
+    <div id="paypal-container-UNSUGP7ZJ7VPL" style="max-width:360px; margin:0 auto;"></div>
+  </div>
+  <script>
+    paypal.HostedButtons({
+      hostedButtonId: "UNSUGP7ZJ7VPL",
+    }).render("#paypal-container-UNSUGP7ZJ7VPL")
+  </script>
 
   <!-- GEAR & PARTNERS -->
   <div id="gear" style="padding:90px 48px; max-width:1300px; margin:0 auto;">
