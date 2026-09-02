@@ -322,18 +322,29 @@
       <div class="ar-display" style="font-size:clamp(32px,4.5vw,52px); text-transform:uppercase; color:white; margin-bottom:12px;">Get In Touch</div>
       <div style="color:oklch(0.7 0.01 255); margin-bottom:40px; font-size:17px;">Questions about joining, practice, or sponsorship — send us a note.</div>
       <div style="display:flex; flex-direction:column; gap:18px;">
-        <input type="text" placeholder="Name" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif;">
+        <input id="contact-name" type="text" placeholder="Name" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif;">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
-          <input type="email" placeholder="Email" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif;">
-          <input type="tel" placeholder="Telephone" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif;">
+          <input id="contact-email" type="email" placeholder="Email" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif;">
+          <input id="contact-phone" type="tel" placeholder="Telephone" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif;">
         </div>
-        <input type="text" placeholder="Subject" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif;">
-        <textarea placeholder="Message" rows="4" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif; resize:vertical;"></textarea>
-        <button type="button" style="margin-top:8px; align-self:flex-start; background:oklch(0.55 0.17 145); color:oklch(0.14 0.02 255); border:none; font-family:'Arial Narrow', Arial, sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:18px; padding:15px 40px; transform:skew(-8deg); cursor:pointer;">
+        <input id="contact-subject" type="text" placeholder="Subject" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif;">
+        <textarea id="contact-message" placeholder="Message" rows="4" style="background:oklch(0.2 0.02 255); border:none; border-bottom:2px solid oklch(0.35 0.01 255); color:white; padding:14px 4px; font-size:16px; font-family:'Manrope',sans-serif; resize:vertical;"></textarea>
+        <button type="button" id="contact-send" style="margin-top:8px; align-self:flex-start; background:oklch(0.55 0.17 145); color:oklch(0.14 0.02 255); border:none; font-family:'Arial Narrow', Arial, sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:18px; padding:15px 40px; transform:skew(-8deg); cursor:pointer;">
           <span style="display:inline-block; transform:skew(8deg);">Send Message</span>
         </button>
       </div>
     </div>
+    <script>
+      document.getElementById('contact-send').addEventListener('click', function() {
+        var name = document.getElementById('contact-name').value;
+        var email = document.getElementById('contact-email').value;
+        var phone = document.getElementById('contact-phone').value;
+        var subject = document.getElementById('contact-subject').value || 'Website Contact Form';
+        var message = document.getElementById('contact-message').value;
+        var body = 'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\n' + message;
+        window.location.href = 'mailto:admin@augustarugby.org?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      });
+    </script>
   </div>
 
   <!-- FOOTER -->
