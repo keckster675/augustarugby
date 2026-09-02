@@ -213,17 +213,44 @@
     <input id="contact-subject" type="text" placeholder="Subject" style="background:#1e263b; border:1px solid #333c52; color:#ffffff; padding:14px; font-size:16px; border-radius:4px;">
     <textarea id="contact-message" placeholder="Message" rows="4" style="background:#1e263b; border:1px solid #333c52; color:#ffffff; padding:14px; font-size:16px; border-radius:4px;"></textarea>
     <button type="button" id="contact-send" class="btn" style="background:#4f9d6e; color:#141a2b; text-align:center; border:none; cursor:pointer;">Send Message</button>
+    <div id="contact-status" style="font-size:14px; color:#c4cad4;"></div>
   </div>
 </div>
 <script>
   document.getElementById('contact-send').addEventListener('click', function() {
+    var button = document.getElementById('contact-send');
+    var status = document.getElementById('contact-status');
     var name = document.getElementById('contact-name').value;
     var email = document.getElementById('contact-email').value;
     var phone = document.getElementById('contact-phone').value;
-    var subject = document.getElementById('contact-subject').value || 'Website Contact Form';
+    var subject = document.getElementById('contact-subject').value;
     var message = document.getElementById('contact-message').value;
-    var body = 'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\n' + message;
-    window.location.href = 'mailto:admin@augustarugby.org?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+    if (!email || !message) {
+      status.textContent = 'Please fill in your email and a message.';
+      return;
+    }
+
+    button.disabled = true;
+    status.textContent = 'Sending…';
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, phone: phone, subject: subject, message: message })
+    }).then(function(res) {
+      if (!res.ok) throw new Error('Request failed');
+      status.textContent = 'Thanks — your message has been sent!';
+      document.getElementById('contact-name').value = '';
+      document.getElementById('contact-email').value = '';
+      document.getElementById('contact-phone').value = '';
+      document.getElementById('contact-subject').value = '';
+      document.getElementById('contact-message').value = '';
+    }).catch(function() {
+      status.textContent = 'Something went wrong — please email admin@augustarugby.org directly.';
+    }).finally(function() {
+      button.disabled = false;
+    });
   });
 </script>
 

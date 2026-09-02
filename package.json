@@ -1,0 +1,7 @@
+{
+  "name": "augustarugby",
+  "private": true,
+  "dependencies": {
+    "resend": "^6.25.0"
+  }
+}
